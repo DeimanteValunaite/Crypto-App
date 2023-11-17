@@ -1,7 +1,8 @@
 #### Crypto App
 Cryptocurrency App is a cutting-edge iOS application designed to provide users with real-time tracking. The app offers live price updates and detailed analytics of the crypto market.
 
-![859shots so](https://github.com/DeimanteValunaite/Crypto/assets/110168300/457b2db7-01fe-4f43-b08f-5f5764e57b9c)
+![CryptoPics](https://github.com/DeimanteValunaite/Crypto-App/assets/110168300/9b8ce598-1e2b-4a38-a279-1b845685735f)
+
 
 ### Key Features:
 - Developed the core functionality and design of the app using SwiftUI.
@@ -21,7 +22,7 @@ Cryptocurrency App is a cutting-edge iOS application designed to provide users w
 
 ### Screen
 
-https://github.com/DeimanteValunaite/Crypto/assets/110168300/c5bb81c1-f2c3-408c-9c52-aca01a18aa89
+https://github.com/DeimanteValunaite/Crypto-App/assets/110168300/ba485ef1-f41d-4a44-a1a3-e0eaa59653e5
 
 
 ### Contributing
