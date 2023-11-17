@@ -16,7 +16,7 @@ struct ContentView: View {
             VStack {
                 SearchBarView(searchText: $viewModel.searchText)
                 List {
-                    ForEach(viewModel.coins) { coin in
+                    ForEach(viewModel.displayedCoins) { coin in
                         HStack(spacing: 12) {
                             Text("\(coin.marketCapRank)")
                                 .foregroundColor(Color.theme.secondaryText)

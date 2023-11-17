@@ -22,7 +22,7 @@ extension Double {
             if let formattedString = currencyFormatter.string(from: number) {
                 return formattedString
             } else {
-                return "$0.00"
+                return "0.00"
         }
     }
     

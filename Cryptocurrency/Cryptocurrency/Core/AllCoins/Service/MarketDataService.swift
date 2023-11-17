@@ -1,5 +1,5 @@
 //
-//  CoinDataService.swift
+//  MarketDataService.swift
 //  Cryptocurrency
 //
 //  Created by Deimante Valunaite on 10/11/2023.
@@ -7,28 +7,26 @@
 
 import Foundation
 
-class CoinDataService {
+class MarketDataService {
+    private let urlString = "https://api.coingecko.com/api/v3/global"
     
-    private let urlString = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=60&page=1&sparkline=false&price_change_percentage=24h&locale=en"
-    
-    func fetchCoins() async throws -> [Coin] {
-        guard let url = URL(string: urlString) else { return [] }
-        
+    func fetchMarketData() async throws -> MarketDataModel? {
+        guard let url = URL(string: urlString) else { return nil }
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
-            let coins = try JSONDecoder().decode([Coin].self, from: data)
-            return coins
+            let market = try JSONDecoder().decode(GlobalData.self, from: data)
+            return market.data
         } catch {
             print("DEBUG: Error \(error.localizedDescription)")
-            return []
+            return nil
         }
     }
 }
 
 // Mark: - Completion Handlers
 
-extension CoinDataService {
-    func fetchCoinsWithResult(completion: @escaping(Result<[Coin], CoinAPIError>) -> Void) {
+extension MarketDataService {
+    func fetchMarketDataWithResult(completion: @escaping(Result<MarketDataModel?, CoinAPIError>) -> Void) {
         guard let url = URL(string: urlString) else { return }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
@@ -53,8 +51,8 @@ extension CoinDataService {
             }
             
             do {
-                let coins = try JSONDecoder().decode([Coin].self, from: data)
-                completion(.success(coins))
+                let market = try JSONDecoder().decode(GlobalData.self, from: data)
+                completion(.success(market.data))
             } catch {
                 print("DEBUG: Failed to decode with error \(error)")
                 completion(.failure(.jsonParsingFailure))

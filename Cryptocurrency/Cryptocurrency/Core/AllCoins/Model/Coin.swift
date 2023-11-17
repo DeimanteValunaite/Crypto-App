@@ -26,7 +26,6 @@ struct Coin: Codable, Identifiable {
     let alt, altChangePercentage: Double?
     let altDate: String?
     let lastUpdated: String?
-//    let sparklineIn7D: SparklineIn7D?
     let priceChangePercentage24InCurrency: Double?
     let currentHoldings: Double?
     
@@ -53,7 +52,6 @@ struct Coin: Codable, Identifiable {
         case altChangePercentage = "alt_change_percentage"
         case altDate = "alt_date"
         case lastUpdated = "last_updated"
-  //      case sparklineIn7D = "sparkline_in_7d"
         case priceChangePercentage24InCurrency = "price_change_percentage_24_in_currency"
         case currentHoldings
     }
@@ -67,7 +65,3 @@ struct Coin: Codable, Identifiable {
     }
     
 }
-
-//struct SparklineIn7D: Codable {
-//    let price: [Double]
-//}
