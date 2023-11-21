@@ -17,31 +17,35 @@ struct ContentView: View {
                 SearchBarView(searchText: $viewModel.searchText)
                 List {
                     ForEach(viewModel.displayedCoins) { coin in
-                        HStack(spacing: 12) {
-                            Text("\(coin.marketCapRank)")
-                                .foregroundColor(Color.theme.secondaryText)
-                            KFImage(coin.image)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 40, height: 40)
-                            
-                            VStack(alignment: .leading, spacing: 6) {
-                                Text(coin.name)
-                                    .fontWeight(.semibold)
-                                
-                                Text(coin.symbol.uppercased())
-                            }
-                            
-                            Spacer()
-                            
-                            VStack(alignment: .trailing) {
-                                Text("$\(coin.currentPrice.asCurrencyWith6Decimals())")
-                                    .bold()
-                                Text("\(coin.priceChangePercentage24H?.asPercentString() ?? "")")
-                                    .foregroundColor((coin.priceChangePercentage24H ?? 0) >= 0 ? Color.theme.green : Color.theme.red)
-                            }
-                        }
-                        .font(.footnote)
+                        NavigationLink (
+                            destination: DetailView(coin: coin),
+                            label: {
+                                HStack(spacing: 12) {
+                                    Text("\(coin.marketCapRank)")
+                                        .foregroundColor(Color.theme.secondaryText)
+                                    KFImage(coin.image)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 40, height: 40)
+                                    
+                                    VStack(alignment: .leading, spacing: 6) {
+                                        Text(coin.name)
+                                            .fontWeight(.semibold)
+                                        
+                                        Text(coin.symbol.uppercased())
+                                    }
+                                    
+                                    Spacer()
+                                    
+                                    VStack(alignment: .trailing) {
+                                        Text("$\(coin.currentPrice.asCurrencyWith6Decimals())")
+                                            .bold()
+                                        Text("\(coin.priceChangePercentage24H?.asPercentString() ?? "")")
+                                            .foregroundColor((coin.priceChangePercentage24H ?? 0) >= 0 ? Color.theme.green : Color.theme.red)
+                                    }
+                                }
+                                .font(.footnote)
+                            }).tint(Color.theme.secondaryText)
                     }
                 }
                 .listStyle(.plain)

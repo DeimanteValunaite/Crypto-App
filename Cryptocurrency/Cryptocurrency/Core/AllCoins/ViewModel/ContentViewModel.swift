@@ -14,6 +14,7 @@ class CoinsViewModel: ObservableObject {
     @Published var displayedCoins = [Coin]()
     @Published var market: MarketDataModel? = nil
     @Published var errorMessage: String?
+    @Published var isLoading: Bool = false
     @Published var searchText: String = "" {
         didSet {
             updateDisplayedCoins()

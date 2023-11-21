@@ -1,30 +1,38 @@
 //
-//  MarketDataService.swift
+//  CoinDetailDataService.swift
 //  Cryptocurrency
 //
-//  Created by Deimante Valunaite on 10/11/2023.
+//  Created by Deimante Valunaite on 18/11/2023.
 //
 
 import Foundation
 
-class MarketDataService {
-    private let urlString = "https://api.coingecko.com/api/v3/global"
+class CoinDetailDataService {
     
-    func fetchMarketData() async throws -> MarketDataModel? {
-        guard let url = URL(string: urlString) else { return nil }
+    let coin: Coin
+    
+    init(coin: Coin) {
+        self.coin = coin
+    }
+    
+    func getCoinDetails() async throws -> [CoinDetailModel] {
+        let urlString = "https://api.coingecko.com/api/v3/coins/\(coin.id)?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=true"
+        guard let url = URL(string: urlString) else { return [] }
+        
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
-            let market = try JSONDecoder().decode(GlobalData.self, from: data)
-            return market.data
+            let details = try JSONDecoder().decode([CoinDetailModel].self, from: data)
+            return details
         } catch {
             print("DEBUG: Error \(error.localizedDescription)")
-            return nil
+            return []
         }
     }
 }
 
-extension MarketDataService {
-    func fetchMarketDataWithResult(completion: @escaping(Result<MarketDataModel?, CoinAPIError>) -> Void) {
+extension CoinDetailDataService {
+    func getCoinDetailsWithResult(completion: @escaping(Result<[CoinDetailModel], CoinAPIError>) -> Void) {
+        let urlString = "https://api.coingecko.com/api/v3/coins/\(coin.id)?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=true"
         guard let url = URL(string: urlString) else { return }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
@@ -49,8 +57,8 @@ extension MarketDataService {
             }
             
             do {
-                let market = try JSONDecoder().decode(GlobalData.self, from: data)
-                completion(.success(market.data))
+                let details = try JSONDecoder().decode([CoinDetailModel].self, from: data)
+                completion(.success(details))
             } catch {
                 print("DEBUG: Failed to decode with error \(error)")
                 completion(.failure(.jsonParsingFailure))

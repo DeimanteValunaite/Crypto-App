@@ -26,6 +26,7 @@ struct Coin: Codable, Identifiable {
     let alt, altChangePercentage: Double?
     let altDate: String?
     let lastUpdated: String?
+    let sparklineIn7D: SparklineIn7D?
     let priceChangePercentage24InCurrency: Double?
     let currentHoldings: Double?
     
@@ -52,16 +53,20 @@ struct Coin: Codable, Identifiable {
         case altChangePercentage = "alt_change_percentage"
         case altDate = "alt_date"
         case lastUpdated = "last_updated"
+        case sparklineIn7D = "sparkline_in_7d"
         case priceChangePercentage24InCurrency = "price_change_percentage_24_in_currency"
         case currentHoldings
     }
     
     func updateHoldings(amount: Double) -> Coin {
-        return Coin(id: id, symbol: symbol, name: name, image: image, currentPrice: currentPrice, marketCap: marketCap, marketCapRank: marketCapRank, fullyDilutedValuation: fullyDilutedValuation, totalVolume: totalVolume, high24H: high24H, low24H: low24H, priceChange24H: priceChange24H, priceChangePercentage24H: priceChangePercentage24H, marketCapChange24H: marketCapChange24H, marketCapChangePercentage24H: marketCapChangePercentage24H, circulatingSupply: circulatingSupply, totalSupply: totalSupply, maxSupply: maxSupply, ath: ath, athChangePercentage: athChangePercentage, athDate: athDate, alt: alt, altChangePercentage: altChangePercentage, altDate: altDate, lastUpdated: lastUpdated, priceChangePercentage24InCurrency: priceChangePercentage24InCurrency, currentHoldings: amount)
+        return Coin(id: id, symbol: symbol, name: name, image: image, currentPrice: currentPrice, marketCap: marketCap, marketCapRank: marketCapRank, fullyDilutedValuation: fullyDilutedValuation, totalVolume: totalVolume, high24H: high24H, low24H: low24H, priceChange24H: priceChange24H, priceChangePercentage24H: priceChangePercentage24H, marketCapChange24H: marketCapChange24H, marketCapChangePercentage24H: marketCapChangePercentage24H, circulatingSupply: circulatingSupply, totalSupply: totalSupply, maxSupply: maxSupply, ath: ath, athChangePercentage: athChangePercentage, athDate: athDate, alt: alt, altChangePercentage: altChangePercentage, altDate: altDate, lastUpdated: lastUpdated, sparklineIn7D: sparklineIn7D, priceChangePercentage24InCurrency: priceChangePercentage24InCurrency, currentHoldings: amount)
     }
     
     var currentHoldingValue: Double {
         return (currentHoldings ?? 0) * currentPrice
     }
     
+    struct SparklineIn7D: Codable {
+        let price: [Double]?
+    }
 }
