@@ -15,6 +15,9 @@ class DetailViewModel: ObservableObject {
     @Published var coin: Coin
     private let coinDetailService: CoinDetailDataService
     
+    @Published var coinDescription: String? = nil
+    @Published var websiteURL: String? = nil
+    @Published var redditURL: String? = nil
     
     init(coin: Coin) {
         self.coin = coin
@@ -72,6 +75,12 @@ class DetailViewModel: ObservableObject {
         let hashingStat = StatisticModel(title: "Hashing Algorithm", value: hashing)
         
         self.additionalStatistics = [highStat, lowStat, priceChangeStat, marketCapChangeStat, blockStat, hashingStat]
+        
+        // description
+
+        self.coinDescription = coinDetails.first?.readableDescription
+        self.websiteURL = coinDetails.first?.links?.homepage?.first
+        self.redditURL = coinDetails.first?.links?.subredditURL
     }
     
     func getCoinDetailsWithCompletionHandler() {

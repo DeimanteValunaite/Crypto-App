@@ -16,7 +16,7 @@ class CoinDetailDataService {
     }
     
     func getCoinDetails() async throws -> [CoinDetailModel] {
-        let urlString = "https://api.coingecko.com/api/v3/coins/\(coin.id)?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=true"
+        let urlString = "https://api.coingecko.com/api/v3/coins/\(coin.id)?localization=true&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=true"
         guard let url = URL(string: urlString) else { return [] }
         
         do {
@@ -32,7 +32,7 @@ class CoinDetailDataService {
 
 extension CoinDetailDataService {
     func getCoinDetailsWithResult(completion: @escaping(Result<[CoinDetailModel], CoinAPIError>) -> Void) {
-        let urlString = "https://api.coingecko.com/api/v3/coins/\(coin.id)?localization=false&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=true"
+        let urlString = "https://api.coingecko.com/api/v3/coins/\(coin.id)?localization=true&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=true"
         guard let url = URL(string: urlString) else { return }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
