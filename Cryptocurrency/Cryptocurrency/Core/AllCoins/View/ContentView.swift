@@ -20,7 +20,7 @@ struct ContentView: View {
                         NavigationLink (
                             destination: DetailView(coin: coin),
                             label: {
-                                HStack(spacing: 12) {
+                                HStack(spacing: 10) {
                                     Text("\(coin.marketCapRank)")
                                         .foregroundColor(Color.theme.secondaryText)
                                     KFImage(coin.image)
@@ -34,6 +34,11 @@ struct ContentView: View {
                                         
                                         Text(coin.symbol.uppercased())
                                     }
+                                    
+                                    Spacer()
+                                    
+                                    MiniChartView(coin: coin)
+                                        .frame(width: 60, height: 40)
                                     
                                     Spacer()
                                     

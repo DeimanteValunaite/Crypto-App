@@ -31,6 +31,7 @@
 		5BB152822B09426200B70B84 /* StatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB152812B09426200B70B84 /* StatisticView.swift */; };
 		5BDBEFD92AFECB4100903C2B /* MarketDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDBEFD82AFECB4100903C2B /* MarketDataModel.swift */; };
 		5BDBEFDB2AFEDB3100903C2B /* MarketDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDBEFDA2AFEDB3100903C2B /* MarketDataService.swift */; };
+		5BFB87482B155BB80018E308 /* MiniChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFB87472B155BB80018E308 /* MiniChartView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		5BB152812B09426200B70B84 /* StatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticView.swift; sourceTree = "<group>"; };
 		5BDBEFD82AFECB4100903C2B /* MarketDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDataModel.swift; sourceTree = "<group>"; };
 		5BDBEFDA2AFEDB3100903C2B /* MarketDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketDataService.swift; sourceTree = "<group>"; };
+		5BFB87472B155BB80018E308 /* MiniChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniChartView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,7 @@
 			children = (
 				5B6F41132B08DE3600190E4B /* DetailView.swift */,
 				5B0E83052B0B843F008AF77A /* ChartView.swift */,
+				5BFB87472B155BB80018E308 /* MiniChartView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				5BB152802B0940E400B70B84 /* StatisticModel.swift in Sources */,
 				5B14AF2B2AFDA35D0012B300 /* Coin.swift in Sources */,
 				5B14AF212AFD9DB50012B300 /* UIApplication.swift in Sources */,
+				5BFB87482B155BB80018E308 /* MiniChartView.swift in Sources */,
 				5BDBEFDB2AFEDB3100903C2B /* MarketDataService.swift in Sources */,
 				5BB152822B09426200B70B84 /* StatisticView.swift in Sources */,
 				5B6E2B442AFD52860051EEC9 /* ContentView.swift in Sources */,
